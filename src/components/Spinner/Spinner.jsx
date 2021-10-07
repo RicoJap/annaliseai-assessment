@@ -1,10 +1,12 @@
 import React from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 
+import "./Spinner.scss";
+
 const Spinner = ({ show = true }) => {
   return (
     show && (
-      <div style={{ paddingTop: 40 }}>
+      <div className="Spinner" data-testid="spinner">
         <CircularProgress />
       </div>
     )

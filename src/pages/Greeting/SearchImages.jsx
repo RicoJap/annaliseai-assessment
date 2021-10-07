@@ -1,52 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import Typography from "@mui/material/Typography";
-import { useSelector } from "react-redux";
 import InputLabel from "@mui/material/InputLabel";
 import MuiInput from "@mui/material/Input";
 import Button from "@mui/material/Button";
-import { toJson } from "unsplash-js";
 
-import "./Greeting.scss";
-import { unsplash } from "../../utils/utils";
+import { fetchImages } from "../../actions/actions";
 import Spinner from "../../components/Spinner/Spinner";
 
-const Greeting = () => {
-  const firstName = useSelector((state) => state.firstName);
+import "./SearchImages.scss";
 
-  const [imageSearch, setImageSearch] = useState("");
-  const [images, setImages] = useState([]);
+const SearchImages = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const firstName = useSelector((state) => state.firstName);
+  const images = useSelector((state) => state.images);
+
+  const [imageQuery, setImageQuery] = useState("");
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    if (!firstName) {
+      history.goBack();
+    }
+  }, []);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [images]);
+
   const handleChange = (evt) => {
-    setImageSearch(evt.target.value);
+    setImageQuery(evt.target.value);
   };
 
   const handleSearch = () => {
     setLoading(true);
-    unsplash.search
-      .photos(imageSearch)
-      .then(toJson)
-      .then((json) => {
-        if (json.results) {
-          setImages(json.results);
-        }
-        setLoading(false);
-      });
+    dispatch(fetchImages(imageQuery));
   };
-
-  console.log("abcabc", loading);
 
   const renderImages = () => {
     if (loading) {
       return <Spinner />;
     } else {
       return (
-        <div className="Greeting__images-container">
+        <div className="SearchImages__images-container">
           {images.map((image) => {
             return (
-              <div key={image.id} className="Greeting__image-wrapper">
+              <div key={image.id} className="SearchImages__image-wrapper">
                 <img
-                  className="Greeting__image"
+                  className="SearchImages__image"
                   src={image.urls.regular}
                   alt={image.alt_description}
                   width="50%"
@@ -60,24 +64,21 @@ const Greeting = () => {
   };
 
   return (
-    <div className="Greeting__wrapper">
-      <div className="Greeting__title">
-        <Typography variant="h1" component="div" gutterBottom>
+    <div className="SearchImages__wrapper">
+      <div className="SearchImages__title">
+        <Typography variant="h3" component="div" gutterBottom>
           Hello, {firstName}
         </Typography>
       </div>
 
-      <div className="Greeting__search-box">
-        <InputLabel
-          htmlFor="input-box__first-name"
-          style={{ textAlign: "center" }}
-        >
+      <div className="SearchImages__search-box">
+        <InputLabel htmlFor="search-images__search-box">
           Search image
         </InputLabel>
         <MuiInput
-          id="input-box__first-name"
+          id="search-images__search-box"
           variant="outlined"
-          value={imageSearch}
+          value={imageQuery}
           onChange={handleChange}
           style={{ width: "100%" }}
         />
@@ -91,4 +92,4 @@ const Greeting = () => {
   );
 };
 
-export default Greeting;
+export default SearchImages;

@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import Greeting from "./pages/Greeting/Greeting";
+import SearchImages from "./pages/Greeting/SearchImages";
 import reportWebVitals from "./reportWebVitals";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import ReduxPromise from "redux-promise";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./reducers/index";
+import InputName from "./pages/InputName/InputName";
+
+import "./index.css";
 
 const AppWrapper = () => {
   const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
@@ -17,8 +18,8 @@ const AppWrapper = () => {
     <BrowserRouter>
       <Provider store={createStoreWithMiddleware(rootReducer)}>
         <Switch>
-          <Route exact path="/" component={App} />
-          <Route exact path="/images" component={Greeting} />
+          <Route exact path="/" component={InputName} />
+          <Route exact path="/images" component={SearchImages} />
         </Switch>
       </Provider>
     </BrowserRouter>

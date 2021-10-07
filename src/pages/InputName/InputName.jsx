@@ -1,22 +1,21 @@
-import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
+import React from "react";
+import { useHistory } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import Typography from "@mui/material/Typography";
 import InputLabel from "@mui/material/InputLabel";
 import MuiInput from "@mui/material/Input";
 import Button from "@mui/material/Button";
-import { useHistory } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
 
-import "./Input.scss";
 import { setFirstName } from "../../actions/actions";
 
-const Input = () => {
+import "./InputName.scss";
+
+const InputName = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  // const [firstName, setFirstName] = useState("");
   const firstName = useSelector((state) => state.firstName);
 
   const handleChange = (evt) => {
-    // setFirstName(evt.target.value);
     dispatch(setFirstName(evt.target.value));
   };
 
@@ -25,8 +24,13 @@ const Input = () => {
   };
 
   return (
-    <div className="Input__wrapper">
-      <div className="Input__box">
+    <div className="InputName__wrapper">
+      <div className="InputName__title">
+        <Typography variant="h4" component="div" gutterBottom>
+          Welcome 😊
+        </Typography>
+      </div>
+      <div className="InputName__input-box">
         <InputLabel htmlFor="input-box__first-name">
           Set Your First Name
         </InputLabel>
@@ -44,4 +48,4 @@ const Input = () => {
   );
 };
 
-export default Input;
+export default InputName;
