@@ -1,28 +1,28 @@
 import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import InputLabel from "@mui/material/InputLabel";
 import MuiInput from "@mui/material/Input";
 import Button from "@mui/material/Button";
-import Unsplash, { toJson } from "unsplash-js";
+import { toJson } from "unsplash-js";
 
 import "./Greeting.scss";
-
-const unsplash = new Unsplash({
-  accessKey: process.env.REACT_APP_UNSPLASH_ACCESS_KEY,
-});
+import { unsplash } from "../../utils/utils";
+import Spinner from "../../components/Spinner/Spinner";
 
 const Greeting = () => {
   const firstName = useSelector((state) => state.firstName);
 
   const [imageSearch, setImageSearch] = useState("");
   const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (evt) => {
     setImageSearch(evt.target.value);
   };
 
   const handleSearch = () => {
+    setLoading(true);
     unsplash.search
       .photos(imageSearch)
       .then(toJson)
@@ -30,7 +30,33 @@ const Greeting = () => {
         if (json.results) {
           setImages(json.results);
         }
+        setLoading(false);
       });
+  };
+
+  console.log("abcabc", loading);
+
+  const renderImages = () => {
+    if (loading) {
+      return <Spinner />;
+    } else {
+      return (
+        <div className="Greeting__images-container">
+          {images.map((image) => {
+            return (
+              <div key={image.id} className="Greeting__image-wrapper">
+                <img
+                  className="Greeting__image"
+                  src={image.urls.regular}
+                  alt={image.alt_description}
+                  width="50%"
+                />
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
   };
 
   return (
@@ -60,20 +86,7 @@ const Greeting = () => {
         Search
       </Button>
 
-      <div className="Greeting__images-container">
-        {images.map((image) => {
-          return (
-            <div key={image.id} className="Greeting__image-wrapper">
-              <img
-                className="Greeting__image"
-                src={image.urls.regular}
-                alt={image.alt_description}
-                width="50%"
-              />
-            </div>
-          );
-        })}
-      </div>
+      {renderImages()}
     </div>
   );
 };
