@@ -6,12 +6,13 @@ import MuiInput from "@mui/material/Input";
 import Button from "@mui/material/Button";
 import Unsplash, { toJson } from "unsplash-js";
 
+import "./Greeting.scss";
+
 const unsplash = new Unsplash({
   accessKey: process.env.REACT_APP_UNSPLASH_ACCESS_KEY,
 });
 
 const Greeting = () => {
-  const dispatch = useDispatch();
   const firstName = useSelector((state) => state.firstName);
 
   const [imageSearch, setImageSearch] = useState("");
@@ -26,7 +27,6 @@ const Greeting = () => {
       .photos(imageSearch)
       .then(toJson)
       .then((json) => {
-        console.log("abcabc", json);
         if (json.results) {
           setImages(json.results);
         }
@@ -34,27 +34,46 @@ const Greeting = () => {
   };
 
   return (
-    <div className="Input__wrapper">
-      <Typography variant="h1" component="div" gutterBottom>
-        Hello, {firstName}
-      </Typography>
+    <div className="Greeting__wrapper">
+      <div className="Greeting__title">
+        <Typography variant="h1" component="div" gutterBottom>
+          Hello, {firstName}
+        </Typography>
+      </div>
 
-      <div className="Input__box">
-        <InputLabel htmlFor="input-box__first-name">Search image</InputLabel>
+      <div className="Greeting__search-box">
+        <InputLabel
+          htmlFor="input-box__first-name"
+          style={{ textAlign: "center" }}
+        >
+          Search image
+        </InputLabel>
         <MuiInput
           id="input-box__first-name"
           variant="outlined"
           value={imageSearch}
           onChange={handleChange}
+          style={{ width: "100%" }}
         />
       </div>
       <Button variant="outlined" onClick={handleSearch}>
-        Proceed
+        Search
       </Button>
 
-      {images.map((image) => {
-        return <img src={image.urls.regular} />;
-      })}
+      <div className="Greeting__images-container">
+        {images.map((image) => {
+          return (
+            <div key={image.id} className="Greeting__image-wrapper">
+              <img
+                className="Greeting__image"
+                src={image.urls.regular}
+                alt={image.alt_description}
+                width="50%"
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
