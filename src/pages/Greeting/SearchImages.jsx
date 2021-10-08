@@ -54,6 +54,7 @@ const SearchImages = () => {
                   src={image.urls.regular}
                   alt={image.alt_description}
                   width="50%"
+                  data-testid="searchimages__image"
                 />
               </div>
             );
@@ -65,14 +66,17 @@ const SearchImages = () => {
 
   return (
     <div className="SearchImages__wrapper">
-      <div className="SearchImages__title">
+      <div className="SearchImages__title" data-testid="searchimages__title">
         <Typography variant="h3" component="div" gutterBottom>
           Hello, {firstName}
         </Typography>
       </div>
 
       <div className="SearchImages__search-box">
-        <InputLabel htmlFor="search-images__search-box">
+        <InputLabel
+          htmlFor="search-images__search-box"
+          data-testid="searchimages__input-label"
+        >
           Search image
         </InputLabel>
         <MuiInput
@@ -81,9 +85,14 @@ const SearchImages = () => {
           value={imageQuery}
           onChange={handleChange}
           style={{ width: "100%" }}
+          data-testid="searchimages__input-box"
         />
       </div>
-      <Button variant="outlined" onClick={handleSearch}>
+      <Button
+        variant="outlined"
+        onClick={handleSearch}
+        data-testid="searchimages__button"
+      >
         Search
       </Button>
 

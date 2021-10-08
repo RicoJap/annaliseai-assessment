@@ -13,7 +13,9 @@ import "./InputName.scss";
 const InputName = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const firstName = useSelector((state) => state.firstName);
+  const firstName = useSelector((state) => {
+    return state.firstName;
+  });
 
   const handleChange = (evt) => {
     dispatch(setFirstName(evt.target.value));
@@ -25,13 +27,16 @@ const InputName = () => {
 
   return (
     <div className="InputName__wrapper">
-      <div className="InputName__title">
+      <div className="InputName__title" data-testid="inputname__title">
         <Typography variant="h4" component="div" gutterBottom>
           Welcome 😊
         </Typography>
       </div>
       <div className="InputName__input-box">
-        <InputLabel htmlFor="input-box__first-name">
+        <InputLabel
+          htmlFor="input-box__first-name"
+          data-testid="inputname__input-label"
+        >
           Set Your First Name
         </InputLabel>
         <MuiInput
@@ -39,9 +44,14 @@ const InputName = () => {
           variant="outlined"
           value={firstName}
           onChange={handleChange}
+          data-testid="inputname__input-box"
         />
       </div>
-      <Button variant="outlined" onClick={handleProceed}>
+      <Button
+        variant="outlined"
+        onClick={handleProceed}
+        data-testid="inputname__button"
+      >
         Proceed
       </Button>
     </div>
