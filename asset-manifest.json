@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/annaliseai-assessment/static/css/main.7ba00e90.chunk.css",
+    "main.js": "/annaliseai-assessment/static/js/main.139face1.chunk.js",
+    "main.js.map": "/annaliseai-assessment/static/js/main.139face1.chunk.js.map",
+    "runtime-main.js": "/annaliseai-assessment/static/js/runtime-main.f201f19c.js",
+    "runtime-main.js.map": "/annaliseai-assessment/static/js/runtime-main.f201f19c.js.map",
+    "static/js/2.789a01ee.chunk.js": "/annaliseai-assessment/static/js/2.789a01ee.chunk.js",
+    "static/js/2.789a01ee.chunk.js.map": "/annaliseai-assessment/static/js/2.789a01ee.chunk.js.map",
+    "static/js/3.1d36d804.chunk.js": "/annaliseai-assessment/static/js/3.1d36d804.chunk.js",
+    "static/js/3.1d36d804.chunk.js.map": "/annaliseai-assessment/static/js/3.1d36d804.chunk.js.map",
+    "index.html": "/annaliseai-assessment/index.html",
+    "static/css/main.7ba00e90.chunk.css.map": "/annaliseai-assessment/static/css/main.7ba00e90.chunk.css.map",
+    "static/js/2.789a01ee.chunk.js.LICENSE.txt": "/annaliseai-assessment/static/js/2.789a01ee.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f201f19c.js",
+    "static/js/2.789a01ee.chunk.js",
+    "static/css/main.7ba00e90.chunk.css",
+    "static/js/main.139face1.chunk.js"
+  ]
+}
