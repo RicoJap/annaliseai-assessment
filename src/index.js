@@ -15,7 +15,7 @@ const AppWrapper = () => {
   const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Provider store={createStoreWithMiddleware(rootReducer)}>
         <Switch>
           <Route exact path="/" component={InputName} />
