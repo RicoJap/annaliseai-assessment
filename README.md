@@ -42,6 +42,11 @@ npm test
 
 - 4 hours dispersed into multiple days (incl. unit testing)
 
+## Preview
+
+https://user-images.githubusercontent.com/29161955/136756634-8099706e-0cd0-44e4-9e7d-93d58b452cdb.mp4
+
+
 ## Choices that I have made
 
 - I use React as the framework because I feel React is my most convenient and go-to JS framework and to allow easy state management and DOM manipulation. Although I am open to learning other frameworks
