@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Image Search (annalise.ai Project)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is based on [Unsplash API](https://unsplash.com/developers) and is built using:
 
-## Available Scripts
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [Material-UI](https://material-ui.com/)
+- [Sass](https://sass-lang.com/)
 
-In the project directory, you can run:
+## Demo
 
-### `yarn start`
+[**Live Demo**](https://ricojap.github.io/annaliseai-assessment)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Enter your name
+- Search images via Unsplash API
 
-### `yarn test`
+## Installation and Usage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Using NPM
 
-### `yarn build`
+```sh
+npm install
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Or alternatively, using Yarn
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```sh
+yarn install
+yarn start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Running Unit Tests
 
-### `yarn eject`
+```sh
+npm test
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Time Spent
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 4 hours dispersed into multiple days (incl. unit testing)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Choices that I have made
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- I use React as the framework because I feel React is my most convenient and go-to JS framework and to allow easy state management and DOM manipulation. Although I am open to learning other frameworks
+- I use material-ui components as it provides a clear and thorough docs for building basic UI components
+- Redux is my choice for state management, although in this case i think it is a bit of overkill since it is quite a simple app
 
-## Learn More
+## Future Improvements Needed
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Improve further on unit tests
+- Of course, next and previous buttons or an infinite scroll (when user scroll, it loads more)
+- Use TypeScript instead of JavaScript
+- Enhance / improve the UI

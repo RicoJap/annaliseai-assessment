@@ -13,9 +13,7 @@ import "./InputName.scss";
 const InputName = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const firstName = useSelector((state) => {
-    return state.firstName;
-  });
+  const firstName = useSelector((state) => state.rootReducer.firstName);
 
   const handleChange = (evt) => {
     dispatch(setFirstName(evt.target.value));

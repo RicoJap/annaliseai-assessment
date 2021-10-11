@@ -15,8 +15,8 @@ const SearchImages = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const firstName = useSelector((state) => state.firstName);
-  const images = useSelector((state) => state.images);
+  const firstName = useSelector((state) => state.rootReducer.firstName);
+  const images = useSelector((state) => state.rootReducer.images);
 
   const [imageQuery, setImageQuery] = useState("");
   const [loading, setLoading] = useState(false);
@@ -46,19 +46,21 @@ const SearchImages = () => {
     } else {
       return (
         <div className="SearchImages__images-container">
-          {images.map((image) => {
-            return (
-              <div key={image.id} className="SearchImages__image-wrapper">
-                <img
-                  className="SearchImages__image"
-                  src={image.urls.regular}
-                  alt={image.alt_description}
-                  width="50%"
-                  data-testid="searchimages__image"
-                />
-              </div>
-            );
-          })}
+          {console.log("abcabc", images)}
+          {images &&
+            images.map((image) => {
+              return (
+                <div key={image.id} className="SearchImages__image-wrapper">
+                  <img
+                    className="SearchImages__image"
+                    src={image.urls.regular}
+                    alt={image.alt_description}
+                    width="50%"
+                    data-testid="searchimages__image"
+                  />
+                </div>
+              );
+            })}
         </div>
       );
     }

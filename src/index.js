@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import SearchImages from "./pages/Greeting/SearchImages";
+import SearchImages from "./pages/SearchImages/SearchImages";
 import reportWebVitals from "./reportWebVitals";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import ReduxPromise from "redux-promise";

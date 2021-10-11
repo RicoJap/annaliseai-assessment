@@ -1,4 +1,5 @@
 import * as types from "../actions/types";
+import { combineReducers } from "redux";
 
 const initialState = {
   firstName: "",
@@ -22,4 +23,6 @@ function rootReducer(state = initialState, action) {
   }
 }
 
-export default rootReducer;
+export default combineReducers({
+  rootReducer,
+});
