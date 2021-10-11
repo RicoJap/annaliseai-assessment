@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+
 import Typography from "@mui/material/Typography";
 import InputLabel from "@mui/material/InputLabel";
 import MuiInput from "@mui/material/Input";
@@ -46,7 +47,6 @@ const SearchImages = () => {
     } else {
       return (
         <div className="SearchImages__images-container">
-          {console.log("abcabc", images)}
           {images &&
             images.map((image) => {
               return (
